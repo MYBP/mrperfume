@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<h:form>
+		<p:panel id="panelbasic" header="Mr.Perfume" footer="x"
+			style="margin-bottom:20px">
+			<h:panelGrid id="authenGrid" columns="2" cellpadding="5">
+				<h:outputText value="ชื่อผู้ใช้งาน: " />
+				<p:inputText required="true" />
+				<h:outputText value="รหัสผ่าน: " />
+				<p:password id="nonFeedback" required="true" />
+
+				<p:commandButton update="authenGrid" value="เข้าสู่ระบบ" />
+				<p:commandButton value="เริ่มต้นใหม่" update="panelbasic" process="@this"
+					style="margin-right:20px;">
+					<p:resetInput target="panelbasic" />
+				</p:commandButton>
+
+			</h:panelGrid>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

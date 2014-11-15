@@ -1,4 +1,4 @@
-package main.java.com.mybp.cus.mrperfume.dto;
+package com.mybp.cus.mrperfume.dto;
 
 public class SaleOrderDTO {
 }

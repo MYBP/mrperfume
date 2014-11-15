@@ -1,4 +1,4 @@
-package main.java.com.mybp.cus.mrperfume.bean;
+package com.mybp.cus.mrperfume.bean;
 
 import java.util.Date;
 
