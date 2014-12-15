@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<h:form>
+		<p:panel id="panelbasic" header="Mr.Perfume-Dealer PO" footer="x"
+			style="margin-bottom:20px">
+			<h:panelGrid id="authenGrid" columns="4" cellpadding="5">
+				<h:outputText value="เอกสารเลขที่: " />
+				<p:inputText required="true" />
+
+				<p:outputLabel value="ลูกค้า:" />
+				<p:outputLabel>บจก. ดับบลิว ดี ฟราแกรนซ์</p:outputLabel>
+
+				<p:outputLabel value="วันที่:" />
+				<p:outputLabel>26/10/2557</p:outputLabel>
+
+			</h:panelGrid>
+			<center>
+				<p:commandButton update="authenGrid" value="ค้นหา" />
+				<p:commandButton update="authenGrid" value="เริ่มใหม่" />
+			</center>
+			<br />
+			<p:dataTable var="car" value="">
+				<p:column headerText="ลำดับ">
+					<h:outputText value="" />
+				</p:column>
+
+				<p:column headerText="รหัสสินค้า">
+					<h:outputText value="" />
+				</p:column>
+
+				<p:column headerText="ชื่อสินค้า">
+					<h:outputText value="" />
+				</p:column>
+
+				<p:column headerText="หน่วยนับ">
+					<h:outputText value="" />
+				</p:column>
+
+				<p:column headerText="จำนวน">
+					<h:outputText value="" />
+				</p:column>
+
+				<p:column headerText="หน่วยละ">
+					<h:outputText value="" />
+				</p:column>
+
+				<p:column headerText="ลด %">
+					<h:outputText value="" />
+				</p:column>
+
+				<p:column headerText="ส่วนลดบาท">
+					<h:outputText value="" />
+				</p:column>
+
+				<p:column headerText="รวมเป็นเงิน">
+					<h:outputText value="" />
+				</p:column>
+				<p:columnGroup type="footer">
+					<p:row>
+						<p:column colspan="8" style="text-align:right"
+							footerText="รวมเงิน:" />
+						<p:column footerText="0.00" />
+					</p:row>
+				</p:columnGroup>
+			</p:dataTable>
+			<p:separator />
+			<p:commandButton update="authenGrid" value="บันทึก" />
+			<p:commandButton update="authenGrid" value="พิมพ์" />
+			<p:commandButton value="เริ่มต้นใหม่" update="panelbasic"
+				process="@this" style="margin-right:20px;">
+				<p:resetInput target="panelbasic" />
+			</p:commandButton>
+		</p:panel>
+
+	</h:form>
+</h:body>
+</html>
