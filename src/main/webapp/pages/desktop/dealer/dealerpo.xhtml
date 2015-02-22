@@ -3,30 +3,36 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:mrperfume="http://java.sun.com/jsf/composite/mrperfume">
 
 <h:head>
 </h:head>
 <h:body>
 	<h:form>
-		<p:panel id="panelbasic" header="Mr.Perfume-Dealer PO"
-			footer="x" style="margin-bottom:20px">
+		<p:panel id="panelbasic" header="Mr.Perfume-Dealer PO" footer="x"
+			style="margin-bottom:20px">
 			<h:panelGrid id="authenGrid" columns="4" cellpadding="5">
 				<h:outputText value="เอกสารเลขที่: " />
 				<p:inputText required="true" />
 
 				<p:outputLabel value="ลูกค้า:" />
-				<p:outputLabel>บจก. ดับบลิว ดี ฟราแกรนซ์</p:outputLabel>
-
+				<p:selectOneMenu id="city" value="#{dealerPoManagedBean.dealerPo.dealer}" >
+					<f:selectItem/>
+					<f:selectItems value="#{dealerPoManagedBean.dealerList}" var="c"
+						itemLabel="#{c.name}" itemValue="#{c.code}" />
+				</p:selectOneMenu>
 				<p:outputLabel value="วันที่:" />
 				<p:outputLabel>26/10/2557</p:outputLabel>
 
 			</h:panelGrid>
+			<p:commandButton value="เลือกรายการสินค้า" type="button"
+				onclick="PF('dlg2').show();" />
 			<p:dataTable var="car" value="">
 				<p:column headerText="ลำดับ">
 					<h:outputText value="" />
 				</p:column>
-			
+
 				<p:column headerText="รหัสสินค้า">
 					<h:outputText value="" />
 				</p:column>
@@ -74,6 +80,12 @@
 				<p:resetInput target="panelbasic" />
 			</p:commandButton>
 		</p:panel>
+
+		<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true"
+			height="600" width="700">
+			<mrperfume:item_lookup />
+		</p:dialog>
+
 
 	</h:form>
 </h:body>
