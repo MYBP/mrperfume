@@ -17,7 +17,7 @@
 				<p:inputText required="true" />
 
 				<p:outputLabel value="ลูกค้า:" />
-				<p:selectOneMenu id="dealer" value="#{dealerPoManagedBean.dealerPo.dealer}" converter="dealerConverter" >
+				<p:selectOneMenu id="dealer" value="#{dealerPoManagedBean.dealerPo.dealer}" converter="#{deaelerConverter}" >
 					<f:selectItem/>
 					<f:selectItems value="#{dealerPoManagedBean.dealerList}" var="c"
 						itemLabel="#{c.name}" itemValue="#{c.id}" />					

@@ -3,13 +3,18 @@ package com.mybp.cus.mrperfume.service.impl;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.mybp.cus.mrperfume.dto.DealerDTO;
 import com.mybp.cus.mrperfume.dto.DealerPoDTO;
 import com.mybp.cus.mrperfume.service.DealerPoService;
-@Component
+@Service("dealerPoService")
 public class DealerPoServiceImpl implements DealerPoService {
 
+	public DealerPoServiceImpl(){
+		System.out.println("DealerPoServiceImpl !!!!");
+	}
+	
 	@Override
 	public List<DealerPoDTO> searchDealerPO(DealerPoDTO criteria) {
 		// TODO Auto-generated method stub
