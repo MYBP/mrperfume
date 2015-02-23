@@ -11,6 +11,10 @@ public class AbstractDTO {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return id==null?"":id.toString();
+	}
+
 }

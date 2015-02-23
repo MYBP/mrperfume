@@ -17,10 +17,10 @@
 				<p:inputText required="true" />
 
 				<p:outputLabel value="ลูกค้า:" />
-				<p:selectOneMenu id="city" value="#{dealerPoManagedBean.dealerPo.dealer}" >
+				<p:selectOneMenu id="dealer" value="#{dealerPoManagedBean.dealerPo.dealer}" converter="dealerConverter" >
 					<f:selectItem/>
 					<f:selectItems value="#{dealerPoManagedBean.dealerList}" var="c"
-						itemLabel="#{c.name}" itemValue="#{c.code}" />
+						itemLabel="#{c.name}" itemValue="#{c.id}" />					
 				</p:selectOneMenu>
 				<p:outputLabel value="วันที่:" />
 				<p:outputLabel>26/10/2557</p:outputLabel>
@@ -73,7 +73,7 @@
 				</p:columnGroup>
 			</p:dataTable>
 			<p:separator />
-			<p:commandButton update="authenGrid" value="บันทึก" />
+			<p:commandButton update="authenGrid" value="บันทึก" actionListener="#{dealerPoManagedBean.saveDealerPo}"/>
 			<p:commandButton update="authenGrid" value="พิมพ์" />
 			<p:commandButton value="เริ่มต้นใหม่" update="panelbasic"
 				process="@this" style="margin-right:20px;">

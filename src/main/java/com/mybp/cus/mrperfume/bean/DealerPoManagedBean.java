@@ -1,7 +1,6 @@
 package com.mybp.cus.mrperfume.bean;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -55,5 +54,8 @@ public class DealerPoManagedBean {
 		this.dealerList = dealerList;
 	}
 	
+	public void saveDealerPo(){
+		
+	}
 	
 }
