@@ -1,14 +1,16 @@
 package com.mybp.cus.mrperfume.bean;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ActionEvent;
 
 import com.mybp.cus.mrperfume.dto.DealerPoDTO;
 import com.mybp.cus.mrperfume.dto.DealerDTO;
+import com.mybp.cus.mrperfume.service.DealerPoService;
 /**
  * @author MrMai
  *
@@ -17,6 +19,9 @@ import com.mybp.cus.mrperfume.dto.DealerDTO;
 @SessionScoped
 public class DealerPoManagedBean {
 
+	@ManagedProperty(value="#{dealerPoService}")
+	private DealerPoService dealerPoService;
+	
 	/**
 	 * Dealer PO
 	 */
@@ -29,13 +34,7 @@ public class DealerPoManagedBean {
 
 	@PostConstruct
 	private void init(){
-		System.out.println("this is the init method");
-		dealerList = new ArrayList<DealerDTO>();
-		DealerDTO dealer = new DealerDTO();
-		dealer.setId(1L);
-		dealer.setCode("A001");
-		dealer.setName("Name#A001");
-		dealerList.add(dealer);
+		dealerList = dealerPoService.loadAllDealer();
 	}
 	
 	public DealerPoDTO getDealerPo() {
@@ -54,8 +53,20 @@ public class DealerPoManagedBean {
 		this.dealerList = dealerList;
 	}
 	
+	public void saveDealerPo(ActionEvent actionEvent){
+		System.out.println("!!! "+this.dealerPo.getDealer().getName());
+	}
+	
 	public void saveDealerPo(){
-		
+		System.out.println("!!! "+this.dealerPo.getDealer().getName());
+	}
+
+	public DealerPoService getDealerPoService() {
+		return dealerPoService;
+	}
+
+	public void setDealerPoService(DealerPoService dealerPoService) {
+		this.dealerPoService = dealerPoService;
 	}
 	
 }
