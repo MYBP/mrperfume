@@ -3,18 +3,24 @@
  */
 package com.mybp.cus.mrperfume.dto;
 
+
+import java.util.Calendar;
 import java.util.List;
 
 /**
  * @author sakon
  *
  */
-public class DealerPoDTO {
+public class DealerPoDTO extends AbstractDTO{
 
 	/**
 	 * Document No
 	 */
 	private String docNo;
+	/**
+	 * Document date
+	 */
+	private Calendar docDate;
 	/**
 	 * Dealer
 	 */
@@ -44,6 +50,14 @@ public class DealerPoDTO {
 
 	public void setDealerPoLines(List<DealerPoLineDTO> dealerPoLines) {
 		this.dealerPoLines = dealerPoLines;
+	}
+
+	public Calendar getDocDate() {
+		return docDate;
+	}
+
+	public void setDocDate(Calendar docDate) {
+		this.docDate = docDate;
 	}
 	
 	

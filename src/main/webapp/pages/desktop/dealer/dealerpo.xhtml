@@ -20,16 +20,16 @@
 				<p:outputLabel value="ลูกค้า:" />
 				<p:selectOneMenu id="dealer" value="#{dealerPoManagedBean.dealerPo.dealer}" converter="#{deaelerConverter}" required="true" >
 					<f:selectItem/>
-					<f:selectItems value="#{dealerPoManagedBean.dealerList}" var="c"
-						itemLabel="#{c.name}" itemValue="#{c}" />					
+					<f:selectItems value="#{dealerPoManagedBean.dealerList}" var="dealer"
+						itemLabel="#{dealer.name}" itemValue="#{dealer}" />					
 				</p:selectOneMenu>
 				<p:outputLabel value="วันที่:" />
-				<p:outputLabel>26/10/2557</p:outputLabel>
+				<p:calendar value="#{dealerPoManagedBean.dealerPo.docDate}" pattern="dd/MM/yyyy" converter="primefacesCalendarConverter"></p:calendar>
 
 			</h:panelGrid>
 			<p:commandButton value="เลือกรายการสินค้า" type="button"
 				onclick="PF('dlg2').show();" />
-			<p:dataTable var="car" value="">
+			<p:dataTable var="car" value="" >
 				<p:column headerText="ลำดับ">
 					<h:outputText value="" />
 				</p:column>
