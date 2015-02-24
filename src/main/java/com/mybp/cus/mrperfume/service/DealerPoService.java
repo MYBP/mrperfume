@@ -13,5 +13,7 @@ public interface DealerPoService {
 	
 	public boolean saveOrUpdateDealerPO(DealerPoDTO dealerPoDto);
 	
+	//public List<ItemDTO> searchItem(ItemDTO criteria);
+	
 	//public List<DealerPoDTO> getDealerPo
 }
