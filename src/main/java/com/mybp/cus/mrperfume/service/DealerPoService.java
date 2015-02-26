@@ -9,11 +9,11 @@ public interface DealerPoService {
 	
 	public DealerDTO getDealer(Long id);
 	
-	public List<DealerPoDTO> searchDealerPO(DealerPoDTO criteria);
+	public PaggingWrapper<DealerPoDTO> searchDealerPO(DealerPoDTO criteria,int page,int rowPerPage);
 	
 	public boolean saveOrUpdateDealerPO(DealerPoDTO dealerPoDto);
 	
-	//public List<ItemDTO> searchItem(ItemDTO criteria);
+	public PaggingWrapper<ItemDTO> searchItem(ItemDTO criteria,int page,int rowPerPage);
 	
-	//public List<DealerPoDTO> getDealerPo
+	public ItemDTO getItem(Long id);
 }

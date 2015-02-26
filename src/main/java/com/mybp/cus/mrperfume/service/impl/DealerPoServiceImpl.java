@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.mybp.cus.mrperfume.dto.DealerDTO;
 import com.mybp.cus.mrperfume.dto.DealerPoDTO;
+import com.mybp.cus.mrperfume.dto.ItemDTO;
+import com.mybp.cus.mrperfume.dto.PaggingWrapper;
 import com.mybp.cus.mrperfume.service.DealerPoService;
 @Service("dealerPoService")
 public class DealerPoServiceImpl implements DealerPoService {
@@ -17,7 +19,7 @@ public class DealerPoServiceImpl implements DealerPoService {
 	}
 	
 	@Override
-	public List<DealerPoDTO> searchDealerPO(DealerPoDTO criteria) {
+	public PaggingWrapper<DealerPoDTO> searchDealerPO(DealerPoDTO criteria,int page,int rowPerPage) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -57,6 +59,28 @@ public class DealerPoServiceImpl implements DealerPoService {
 			dealer.setName("Name#A003");
 		}
 		return dealer;
+	}
+
+	@Override
+	public PaggingWrapper<ItemDTO> searchItem(ItemDTO criteria, int page, int rowPerPage) {
+		// TODO Auto-generated method stub
+		PaggingWrapper<ItemDTO> result = new PaggingWrapper<ItemDTO>();
+		Long id = 1L;
+		for(int x=0;x<10;x++){
+			result.getValues().add(this.getItem(id++));
+		}
+		result.setAllPage(10);
+		result.setCurrentPage(1);
+		return result;
+	}
+
+	@Override
+	public ItemDTO getItem(Long id) {
+		ItemDTO item = new ItemDTO();
+		item.setId(id);
+		item.setCode("item code# "+id);
+		item.setName("item name # " + id);
+		return item;
 	}
 	
 }
