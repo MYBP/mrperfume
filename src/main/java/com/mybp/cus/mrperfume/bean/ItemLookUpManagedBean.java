@@ -80,6 +80,14 @@ public class ItemLookUpManagedBean {
 	public void setRowPerPage(int rowPerPage) {
 		this.rowPerPage = rowPerPage;
 	}
+
+	public ItemDTO getCriteria() {
+		return criteria;
+	}
+
+	public void setCriteria(ItemDTO criteria) {
+		this.criteria = criteria;
+	}
 	
 	
 	

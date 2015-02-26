@@ -18,10 +18,10 @@
 			style="margin-bottom:20px">
 			<h:panelGrid id="authenGrid" columns="4" cellpadding="5">
 				<h:outputText value="รหัสสินค้า: " />
-				<p:inputText required="false" value="#{itemLookUpManagedBean.code}"/>
+				<p:inputText required="false" value="#{itemLookUpManagedBean.criteria.code}"/>
 
 				<h:outputText value="ชื่อสินค้า: " />
-				<p:inputText required="false" value="#{itemLookUpManagedBean.name}" />
+				<p:inputText required="false" value="#{itemLookUpManagedBean.criteria.name}" />
 
 
 			</h:panelGrid>

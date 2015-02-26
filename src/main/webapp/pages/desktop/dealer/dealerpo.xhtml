@@ -18,18 +18,24 @@
 				<p:outputLabel value="#{dealerPoManagedBean.dealerPo.dealer}" />
 
 				<p:outputLabel value="ลูกค้า:" />
-				<p:selectOneMenu id="dealer" value="#{dealerPoManagedBean.dealerPo.dealer}" converter="#{deaelerConverter}" required="true" >
-					<f:selectItem/>
-					<f:selectItems value="#{dealerPoManagedBean.dealerList}" var="dealer"
-						itemLabel="#{dealer.name}" itemValue="#{dealer}" />					
+				<p:selectOneMenu id="dealer"
+					value="#{dealerPoManagedBean.dealerPo.dealer}"
+					converter="#{deaelerConverter}">
+					<f:selectItem />
+					<f:selectItems value="#{dealerPoManagedBean.dealerList}"
+						var="dealer" itemLabel="#{dealer.name}" itemValue="#{dealer}" />
 				</p:selectOneMenu>
 				<p:outputLabel value="วันที่:" />
-				<p:calendar value="#{dealerPoManagedBean.dealerPo.docDate}" pattern="dd/MM/yyyy" converter="primefacesCalendarConverter"></p:calendar>
+				<p:calendar value="#{dealerPoManagedBean.dealerPo.docDate}"
+					pattern="dd/MM/yyyy" converter="primefacesCalendarConverter"></p:calendar>
 
 			</h:panelGrid>
-			<p:commandButton value="เลือกรายการสินค้า" type="button"
-				onclick="PF('dlg2').show();" />
-			<p:dataTable var="car" value="" >
+			<p:commandButton value="เลือกรายการสินค้า"
+				action="#{dealerPoManagedBean.chooseItem}">
+				<p:ajax event="dialogReturn"
+					listener="#{dealerPoManagedBean.onItemChosen}" update="growl" />
+			</p:commandButton>
+			<p:dataTable var="car" value="">
 				<p:column headerText="ลำดับ">
 					<h:outputText value="" />
 				</p:column>
@@ -74,7 +80,8 @@
 				</p:columnGroup>
 			</p:dataTable>
 			<p:separator />
-			<p:commandButton update="authenGrid" value="บันทึก" actionListener="#{dealerPoManagedBean.saveDealerPo}"/>
+			<p:commandButton update="authenGrid" value="บันทึก"
+				actionListener="#{dealerPoManagedBean.saveDealerPo}" />
 			<p:commandButton update="authenGrid" value="พิมพ์" />
 			<p:commandButton value="เริ่มต้นใหม่" update="panelbasic"
 				process="@this" style="margin-right:20px;">
@@ -82,13 +89,13 @@
 			</p:commandButton>
 		</p:panel>
 
-		
+
 
 
 	</h:form>
 	<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true"
-			height="600" width="700">
-			<mrperfume:item_lookup />
-		</p:dialog>
+		height="600" width="700">
+		<mrperfume:item_lookup />
+	</p:dialog>
 </h:body>
 </html>
