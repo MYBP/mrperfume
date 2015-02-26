@@ -18,16 +18,16 @@
 			style="margin-bottom:20px">
 			<h:panelGrid id="authenGrid" columns="4" cellpadding="5">
 				<h:outputText value="รหัสสินค้า: " />
-				<p:inputText required="true" />
+				<p:inputText required="false" value="#{itemLookUpManagedBean.code}"/>
 
 				<h:outputText value="ชื่อสินค้า: " />
-				<p:inputText required="true" />
+				<p:inputText required="false" value="#{itemLookUpManagedBean.name}" />
 
 
 			</h:panelGrid>
 			<center>
-				<p:commandButton update="authenGrid" value="ค้นหา" />
-				<p:commandButton update="authenGrid" value="เริ่มใหม่" />
+				<p:commandButton update="authenGrid" value="ค้นหา" actionListener="#{itemLookUpManagedBean.search}"/>
+				<p:commandButton update="authenGrid" value="เริ่มใหม่" actionListener="#{itemLookUpManagedBean.reset}"/>
 			</center>
 			<br />
 			<p:dataTable var="car" value="">
