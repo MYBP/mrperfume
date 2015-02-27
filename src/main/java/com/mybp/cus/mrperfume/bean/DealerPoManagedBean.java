@@ -1,5 +1,6 @@
 package com.mybp.cus.mrperfume.bean;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ import org.primefaces.event.SelectEvent;
 
 import com.mybp.cus.mrperfume.dto.DealerPoDTO;
 import com.mybp.cus.mrperfume.dto.DealerDTO;
+import com.mybp.cus.mrperfume.dto.DealerPoLineDTO;
 import com.mybp.cus.mrperfume.dto.ItemDTO;
 import com.mybp.cus.mrperfume.service.DealerPoService;
 /**
@@ -23,7 +25,12 @@ import com.mybp.cus.mrperfume.service.DealerPoService;
  */
 @ManagedBean
 @SessionScoped
-public class DealerPoManagedBean {
+public class DealerPoManagedBean implements Serializable  {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5039665686971270120L;
 
 	@ManagedProperty(value="#{dealerPoService}")
 	private DealerPoService dealerPoService;
@@ -89,7 +96,30 @@ public class DealerPoManagedBean {
      
     public void onItemChosen(SelectEvent event) {
     	//TODO Extract result
-        List<ItemDTO> items = (List<ItemDTO>) event.getObject();
+        @SuppressWarnings("unchecked")
+		List<ItemDTO> items = (List<ItemDTO>) event.getObject();
+        
+        List<DealerPoLineDTO> dlLines = this.dealerPo.getDealerPoLines();
+        
+        if(dlLines != null){
+        	for(ItemDTO item : items){
+        		if(null != item.getCode() && !"".equals(item.getCode())){
+        			if(!this.checkItemCode(dlLines, item.getCode())){
+        				DealerPoLineDTO line = new DealerPoLineDTO(this.dealerPo,item);
+        				dlLines.add(line);
+        			}
+        		}
+        	}
+        }
+    }
+    
+    private boolean checkItemCode(List<DealerPoLineDTO> dlLines,String code){
+    	for(DealerPoLineDTO dtoLine : dlLines){    		
+    		if(dtoLine.getItem().getCode().equals(code)){
+    			return true;
+    		}
+    	}
+    	return false;
     }
 	
 }

@@ -4,6 +4,7 @@
 package com.mybp.cus.mrperfume.dto;
 
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class DealerPoDTO extends AbstractDTO{
 	 */
 	private DealerDTO dealer;
 	
-	private List<DealerPoLineDTO> dealerPoLines;
+	private List<DealerPoLineDTO> dealerPoLines=new ArrayList<DealerPoLineDTO>();
 
 	public DealerDTO getDealer() {
 		return dealer;

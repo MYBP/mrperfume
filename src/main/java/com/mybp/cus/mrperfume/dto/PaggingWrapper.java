@@ -11,7 +11,7 @@ public class PaggingWrapper<T> {
 	
 	int currentPage;
 	
-	int allPage;
+	int dataSize;
 
 	public List<T> getValues() {
 		return values;
@@ -29,12 +29,13 @@ public class PaggingWrapper<T> {
 		this.currentPage = currentPage;
 	}
 
-	public int getAllPage() {
-		return allPage;
+	public int getDataSize() {
+		return dataSize;
 	}
 
-	public void setAllPage(int allPage) {
-		this.allPage = allPage;
+	public void setDataSize(int dataSize) {
+		this.dataSize = dataSize;
 	}
+
 	
 }

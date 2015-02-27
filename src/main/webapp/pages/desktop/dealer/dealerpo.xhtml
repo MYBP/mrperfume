@@ -33,19 +33,19 @@
 			<p:commandButton value="เลือกรายการสินค้า"
 				action="#{dealerPoManagedBean.chooseItem}">
 				<p:ajax event="dialogReturn"
-					listener="#{dealerPoManagedBean.onItemChosen}" update="growl" />
+					listener="#{dealerPoManagedBean.onItemChosen}" update="growl,dealerPoLines" />
 			</p:commandButton>
-			<p:dataTable var="car" value="">
+			<p:dataTable id="dealerPoLines" var="dealerPoLines" value="#{dealerPoManagedBean.dealerPo.dealerPoLines}">
 				<p:column headerText="ลำดับ">
 					<h:outputText value="" />
 				</p:column>
 
 				<p:column headerText="รหัสสินค้า">
-					<h:outputText value="" />
+					<h:outputText value="#{dealerPoLines.item.name}" />
 				</p:column>
 
 				<p:column headerText="ชื่อสินค้า">
-					<h:outputText value="" />
+					<h:outputText value="#{dealerPoLines.item.name}" />
 				</p:column>
 
 				<p:column headerText="หน่วยนับ">
@@ -88,14 +88,7 @@
 				<p:resetInput target="panelbasic" />
 			</p:commandButton>
 		</p:panel>
-
-
-
-
 	</h:form>
-	<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true"
-		height="600" width="700">
-		<mrperfume:item_lookup />
-	</p:dialog>
+
 </h:body>
 </html>

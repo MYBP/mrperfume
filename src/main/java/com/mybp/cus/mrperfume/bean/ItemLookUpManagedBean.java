@@ -1,5 +1,6 @@
 package com.mybp.cus.mrperfume.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -10,8 +11,8 @@ import javax.faces.event.ActionEvent;
 
 import org.primefaces.context.RequestContext;
 
+import com.mybp.cus.mrperfume.bean.lazy.LazyItemDataModel;
 import com.mybp.cus.mrperfume.dto.ItemDTO;
-import com.mybp.cus.mrperfume.dto.PaggingWrapper;
 import com.mybp.cus.mrperfume.service.DealerPoService;
 /**
  * @author MrMai
@@ -19,32 +20,25 @@ import com.mybp.cus.mrperfume.service.DealerPoService;
  */
 @ManagedBean
 @SessionScoped
-public class ItemLookUpManagedBean {
+public class ItemLookUpManagedBean implements Serializable   {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8498446381029727272L;
+
 
 	@ManagedProperty(value="#{dealerPoService}")
 	private DealerPoService dealerPoService;
 	
-	private ItemDTO criteria = new ItemDTO();
 	
-	PaggingWrapper<ItemDTO> searchItem = new PaggingWrapper<ItemDTO>();
-	
-	int currentPage = 1;
-	
-	int rowPerPage = 10;
+	LazyItemDataModel lazyItemModel = null;
 	
 	private List<ItemDTO> selectedItem;
 
 	@PostConstruct
 	public void init(){
-		
-	}
-	
-	public void search(){
-		this.searchItem = dealerPoService.searchItem(criteria, currentPage, rowPerPage);
-	}
-	
-	public void search(ActionEvent actionEvent){
-		this.search();
+		lazyItemModel = new LazyItemDataModel(dealerPoService);
 	}
 	
 	public void reset(){
@@ -54,49 +48,9 @@ public class ItemLookUpManagedBean {
 	public void reset(ActionEvent actionEvent){
 		this.reset();
 	}
-	
-	public DealerPoService getDealerPoService() {
-		return dealerPoService;
-	}
 
-	public void setDealerPoService(DealerPoService dealerPoService) {
-		this.dealerPoService = dealerPoService;
-	}
-
-	public PaggingWrapper<ItemDTO> getSearchItem() {
-		return searchItem;
-	}
-
-	public void setSearchItem(PaggingWrapper<ItemDTO> searchItem) {
-		this.searchItem = searchItem;
-	}
-
-	public int getCurrentPage() {
-		return currentPage;
-	}
-
-	public void setCurrentPage(int currentPage) {
-		this.currentPage = currentPage;
-	}
-
-	public int getRowPerPage() {
-		return rowPerPage;
-	}
-
-	public void setRowPerPage(int rowPerPage) {
-		this.rowPerPage = rowPerPage;
-	}
-
-	public ItemDTO getCriteria() {
-		return criteria;
-	}
-
-	public void setCriteria(ItemDTO criteria) {
-		this.criteria = criteria;
-	}
-	
-	public void selectItemFromDialog(ItemDTO item) {
-        RequestContext.getCurrentInstance().closeDialog(item);
+	public void selectItemFromDialog() {
+        RequestContext.getCurrentInstance().closeDialog(selectedItem);
     }
 
 	public List<ItemDTO> getSelectedItem() {
@@ -105,6 +59,22 @@ public class ItemLookUpManagedBean {
 
 	public void setSelectedItem(List<ItemDTO> selectedItem) {
 		this.selectedItem = selectedItem;
+	}
+
+	public LazyItemDataModel getLazyItemModel() {
+		return lazyItemModel;
+	}
+
+	public void setLazyItemModel(LazyItemDataModel lazyItemModel) {
+		this.lazyItemModel = lazyItemModel;
+	}
+
+	public DealerPoService getDealerPoService() {
+		return dealerPoService;
+	}
+
+	public void setDealerPoService(DealerPoService dealerPoService) {
+		this.dealerPoService = dealerPoService;
 	}
 	
 	

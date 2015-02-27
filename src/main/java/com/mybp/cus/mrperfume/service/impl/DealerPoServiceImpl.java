@@ -62,15 +62,16 @@ public class DealerPoServiceImpl implements DealerPoService {
 	}
 
 	@Override
-	public PaggingWrapper<ItemDTO> searchItem(ItemDTO criteria, int page, int rowPerPage) {
+	public PaggingWrapper<ItemDTO> searchItem(ItemDTO criteria, int rowStart, int rowPerPage) {
 		// TODO Auto-generated method stub
 		PaggingWrapper<ItemDTO> result = new PaggingWrapper<ItemDTO>();
-		Long id = 1L;
+		
+		Long id = new Long(""+ (++rowStart));
 		for(int x=0;x<10;x++){
 			result.getValues().add(this.getItem(id++));
 		}
-		result.setAllPage(10);
 		result.setCurrentPage(1);
+		result.setDataSize(100);
 		return result;
 	}
 

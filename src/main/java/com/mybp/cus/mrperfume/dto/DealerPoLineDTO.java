@@ -22,6 +22,11 @@ public class DealerPoLineDTO extends AbstractDTO {
 	 */
 	private int lineNumber;
 
+	public DealerPoLineDTO(DealerPoDTO dealerPo,ItemDTO item){
+		this.dealerPo = dealerPo;
+		this.item = item;
+	}
+	
 	public DealerPoDTO getDealerPo() {
 		return dealerPo;
 	}
