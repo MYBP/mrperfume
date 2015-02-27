@@ -8,7 +8,8 @@
 	xmlns:composite="http://java.sun.com/jsf/composite">
 
 <composite:interface>
-	<composite:attribute name="isShowRemainingStock" default="N" shortDescription="ShowRemainingStock [Default : No]" />
+	<composite:attribute name="isShowRemainingStock" default="N"
+		shortDescription="ShowRemainingStock [Default : No]" />
 </composite:interface>
 
 <composite:implementation>
@@ -18,31 +19,46 @@
 			style="margin-bottom:20px">
 			<h:panelGrid id="authenGrid" columns="4" cellpadding="5">
 				<h:outputText value="รหัสสินค้า: " />
-				<p:inputText required="false" value="#{itemLookUpManagedBean.criteria.code}"/>
+				<p:inputText required="false"
+					value="#{itemLookUpManagedBean.criteria.code}" />
 
 				<h:outputText value="ชื่อสินค้า: " />
-				<p:inputText required="false" value="#{itemLookUpManagedBean.criteria.name}" />
+				<p:inputText required="false"
+					value="#{itemLookUpManagedBean.criteria.name}" />
 
 
 			</h:panelGrid>
 			<center>
-				<p:commandButton update="authenGrid" value="ค้นหา" actionListener="#{itemLookUpManagedBean.search}"/>
-				<p:commandButton update="authenGrid" value="เริ่มใหม่" actionListener="#{itemLookUpManagedBean.reset}"/>
+				<p:commandButton update="authenGrid" value="ค้นหา"
+					actionListener="#{itemLookUpManagedBean.search}" />
+				<p:commandButton update="authenGrid" value="เริ่มใหม่"
+					actionListener="#{itemLookUpManagedBean.reset}" />
 			</center>
 			<br />
-			<p:dataTable var="car" value="">
+			<p:dataTable var="item"
+				value="#{itemLookUpManagedBean.searchItem.values}"
+				selection="#{itemLookUpManagedBean.selectedItem}">
 
-
+				<p:column selectionMode="multiple"
+					style="width:16px;text-align:center" />
 				<p:column headerText="ลำดับ">
 					<h:outputText value="" />
 				</p:column>
 
 				<p:column headerText="รหัสสินค้า">
-					<h:outputText value="" />
+					<h:outputText value="#{item.code}" />
 				</p:column>
 
 				<p:column headerText="ชื่อสินค้า">
-					<h:outputText value="" />
+					<h:outputText value="#{item.name}" />
+				</p:column>
+
+				<p:column headerText="Unit Price">
+					<h:outputText value="#{item.name}" />
+				</p:column>
+
+				<p:column headerText="default discount">
+					<h:outputText value="#{item.name}" />
 				</p:column>
 
 				<p:column headerText="จำนวนคงเหลือ">
@@ -52,7 +68,8 @@
 			</p:dataTable>
 			<p:separator />
 			<center>
-				<p:commandButton update="authenGrid" value="เลือก" />
+				<p:commandButton update="authenGrid" value="เลือก"
+					actionListener="#{itemLookUpManagedBean.selectItemFromDialog}" />
 			</center>
 		</p:panel>
 

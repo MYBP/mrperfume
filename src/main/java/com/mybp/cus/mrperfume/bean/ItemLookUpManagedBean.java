@@ -1,10 +1,14 @@
 package com.mybp.cus.mrperfume.bean;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.ActionEvent;
+
+import org.primefaces.context.RequestContext;
 
 import com.mybp.cus.mrperfume.dto.ItemDTO;
 import com.mybp.cus.mrperfume.dto.PaggingWrapper;
@@ -27,6 +31,8 @@ public class ItemLookUpManagedBean {
 	int currentPage = 1;
 	
 	int rowPerPage = 10;
+	
+	private List<ItemDTO> selectedItem;
 
 	@PostConstruct
 	public void init(){
@@ -89,7 +95,17 @@ public class ItemLookUpManagedBean {
 		this.criteria = criteria;
 	}
 	
-	
+	public void selectItemFromDialog(ItemDTO item) {
+        RequestContext.getCurrentInstance().closeDialog(item);
+    }
+
+	public List<ItemDTO> getSelectedItem() {
+		return selectedItem;
+	}
+
+	public void setSelectedItem(List<ItemDTO> selectedItem) {
+		this.selectedItem = selectedItem;
+	}
 	
 	
 }

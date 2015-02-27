@@ -88,6 +88,7 @@ public class DealerPoManagedBean {
     }
      
     public void onItemChosen(SelectEvent event) {
+    	//TODO Extract result
         List<ItemDTO> items = (List<ItemDTO>) event.getObject();
     }
 	
