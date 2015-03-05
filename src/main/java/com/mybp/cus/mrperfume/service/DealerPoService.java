@@ -11,6 +11,8 @@ public interface DealerPoService {
 	
 	public PaggingWrapper<DealerPoDTO> searchDealerPO(DealerPoDTO criteria,int page,int rowPerPage);
 	
+	public DealerPoDTO getDealerPo(Long id);
+	
 	public boolean saveOrUpdateDealerPO(DealerPoDTO dealerPoDto);
 	
 	public PaggingWrapper<ItemDTO> searchItem(ItemDTO criteria,int page,int rowPerPage);

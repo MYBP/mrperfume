@@ -4,6 +4,7 @@
 package com.mybp.cus.mrperfume.dto;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -12,8 +13,12 @@ import java.util.List;
  * @author sakon
  *
  */
-public class DealerPoDTO extends AbstractDTO{
+public class DealerPoDTO extends AbstractDTO implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4492931514958440478L;
 	/**
 	 * Document No
 	 */

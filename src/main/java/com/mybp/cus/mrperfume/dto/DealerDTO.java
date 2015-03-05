@@ -1,7 +1,13 @@
 package com.mybp.cus.mrperfume.dto;
 
-public class DealerDTO extends AbstractDTO{
+import java.io.Serializable;
 
+public class DealerDTO extends AbstractDTO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6754495090213396188L;
 	/**
 	 * Dealer Code
 	 */
